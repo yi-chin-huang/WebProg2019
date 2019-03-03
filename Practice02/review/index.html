@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo wall</title>
+	<link rel='stylesheet' href="styles.css"> 
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<script type="text/javascript" src="demo.js"></script>
+</head>
+<body>
+	<div class="image-viewer__container">
+		<div class="image-viewer__title "> 
+			Welcome to my photo wall<a target="_blank" style="text-decoration: none; font-size: 15px;" href="https://www.flickr.com/photos/143853988@N07/albums"><img class="flickr" src="image/flickr.png">click here</a>  
+		</div>
+		<div class="image-viewer__main">
+			<div class="image-viewer__button " >
+				<button><img id='left' class="btn" onclick="left()" src="image/001-back.png"></button>
+			</div>
+			<div class="image-viewer__display">
+				<img id="display"  src="image/5.jpg">
+				<span id="url">https://farm8.staticflickr.com/7888/40265067513_d79951181a_b.jpg </span>
+				<div class="sm-photo">
+					<span><img id="prev" src="image/4.jpg"></span>
+					<span><img id="now"  src="image/5.jpg"></span>
+					<span><img id="next" src="image/6.jpg"></span>
+				</div>
+			</div>
+			<div class="image-viewer__button ">
+				<button><img id='right' class="btn" onclick="right()" src="image/002-next.png" alt="sometihng goes wrong"></button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
