@@ -24,6 +24,7 @@ class ItemNode {
 //initial appearance
 updateClear();
 document.getElementById("state_all").style["border"] = "1px solid rgba(99, 99, 99, .4)";
+document.getElementById("footer").style["display"] = "none";
 
 function addItem(content)
 {
@@ -60,6 +61,7 @@ function addItem(content)
 	itemNode.appendChild(imgX);
 	todoList.appendChild(itemNode);
 
+	document.getElementById("footer").style["display"] = "";
 	updateActive();
 	updateClear();
 	itemcnt += 1;
@@ -108,7 +110,10 @@ function deleteItem(e)
 			break;
 		}	
 	}
-
+	if(todoArr.length === 0)
+	{
+		document.getElementById("footer").style["display"] = "none";
+	}
 	itemNode.remove();
 	updateActive();
 	updateClear();
