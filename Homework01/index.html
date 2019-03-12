@@ -31,9 +31,9 @@
             <footer class = "todo-app__footer" id = "footer">
                 <div class = "todo-app__total" id = "activeCount"> 0 Active </div>
                 <ul class = "todo-app__view-buttons" id = "view-state">
-                    <button onclick = "updateState(this)" id = "state_all"> All</button>
-                    <button onclick = "updateState(this)" id = "state_active"> Active </button>
-                    <button onclick = "updateState(this)" id = "state_completed"> Completed </button>
+                    <button onclick = "changeCurrentState(this)" id = "state_all"> All</button>
+                    <button onclick = "changeCurrentState(this)" id = "state_active"> Active </button>
+                    <button onclick = "changeCurrentState(this)" id = "state_completed"> Completed </button>
 
                 </ul>
                 <div class = "todo-app__clean" id = "clear-completed" onclick = "clearCompleted()"> <button> Clear Completed </button> </div>

@@ -11,7 +11,7 @@ input.addEventListener('keyup', event => {
 
 let itemcnt = 0;
 let todoArr = [];
-
+let currentState = 0;
 const todoList = document.getElementById('todo-list');
 
 class ItemNode {
@@ -64,6 +64,7 @@ function addItem(content)
 	document.getElementById("footer").style["display"] = "";
 	updateActive();
 	updateClear();
+	updateState();
 	itemcnt += 1;
 	
 
@@ -96,6 +97,7 @@ function clickCheckbox(e)
 
 	updateActive();
 	updateClear();
+	updateState();
 
 }
 
@@ -128,26 +130,46 @@ function updateActive()
 	
 }
 
-function updateState(e)
+function changeCurrentState(e)
 {
 	state = e.id;
-	// stateButtons = e.parentNode;
 	document.getElementById("state_active").style["border"] = "none";
 	document.getElementById("state_completed").style["border"] = "none";
 	document.getElementById("state_all").style["border"] = "none";
 	e.style["border"] =  "1px solid rgba(99, 99, 99, .4)";
+	if(state === "state_all")
+	{
+		currentState = 0;
+	}
+	else if(state === "state_active")
+	{
+		currentState = 1;
+	}
+	else if(state === "state_completed")
+	{
+		currentState = 2;
+	}
+	updateState();
+
+}
+function updateState()
+{
+	
+
 	allNodes = todoArr.map(obj => {return obj.node})
 	allNodes.map(showItem);
-	if(state === "state_active")
+	if(currentState === 1)
 	{
+		currentState = 1;
 		items = todoArr.filter(obj => {return obj.isComplete === true});
 		itemNodes = items.map(obj => {return obj.node});
 		itemNodes.map(hideItem);
 
 
 	}
-	else if (state === "state_completed")
+	else if (currentState === 2)
 	{
+		currentState = 2;
 		items = todoArr.filter(obj => {return obj.isComplete === false});
 		itemNodes = items.map(obj => {return obj.node});
 		itemNodes.map(hideItem);
