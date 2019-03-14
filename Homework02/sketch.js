@@ -10,6 +10,7 @@ const globalv = 3;
 const pipeDistance = 230;
 const pipeGap = 60;
 let randBg, randColor, randPipe;
+let point = 0;
 
 
 // assets from: https://github.com/sourabhv/FlapPyBird/tree/master/assets
@@ -40,6 +41,10 @@ function preload() {
     );
     
     gameOver = loadImage("assets/sprites/gameover.png");
+
+    numImgs =  [...Array(10).keys()].map(
+        point => loadImage(`assets/sprites/${point}.png`)
+    );
 }
 
 
@@ -81,7 +86,9 @@ function draw() {
             drawMovingBird();
             pop();
             getStarted(); 
-            checkHit();          
+            checkHit(); 
+            getPoints();  
+            showScore();       
             break;
         case 2: // Losed
             drawBackground();
@@ -125,9 +132,8 @@ function setBackground()
     bsHeight = baseImg.height;
     x_bg = 0;
     randBg = Math.floor(Math.random() * 10) % 2;
+    point = 0;
     
-
-
 }
 
 function setReady()
@@ -271,8 +277,22 @@ function checkHit()
 
 function lose()
 {
-
     image(gameOver, width/2 - gameOver.width/2 , height/2 - gameOver.height/2);
+}
 
+function getPoints()
+{
+    if( (x_bird >= pipeL1.x + pipeL1.w && x_bird <= pipeL1.x + pipeL1.w + 3) || (x_bird >= pipeL2.x + pipeL2.w && x_bird <= pipeL2.x + pipeL2.w + 3) )
+    {
+        soundObjs[2].play();
+        point += 1;
+    }   
+}
+function showScore()
+{
+    num1 = Math.floor(point/10);
+    num2 = point%10;
+    image(numImgs[num1], width/2 - numImgs[num1].width/2, height * 0.1);
+    image(numImgs[num2], width/2 + numImgs[num1].width/2, height * 0.1);
 }
 
