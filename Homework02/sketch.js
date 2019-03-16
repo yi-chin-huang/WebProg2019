@@ -7,10 +7,12 @@ let flapcnt, tempcnt;
 let mode, x_ready, y_ready;
 let pipeL1, pipeL2, pipeL3, pipeU1, pipeU2, pipeU3;
 const globalv = 3;
-const pipeDistance = 230;
-const pipeGap = 60;
+const pipeDistance = 250;
+// const pipeGap = 60;
 let randBg, randColor, randPipe;
 let point = 0;
+
+let randomheightL1, randomheightL2, randomheightU1, randomheightU2;
 
 
 // assets from: https://github.com/sourabhv/FlapPyBird/tree/master/assets
@@ -162,11 +164,23 @@ function setBird()
 
 }
 function setPipe() {
-    pipeL1 = new Pipe(width, 0.5*height, width * 0.15, height * 0.3);
-    pipeL2 = new Pipe(width + pipeDistance, 0.5*height, width * 0.15, height * 0.3);
-    pipeU1 = new Pipe(width, 0, width * 0.15, height * 0.3);
-    pipeU2 = new Pipe(width + pipeDistance, 0, width * 0.15, height * 0.3);
+    // pipeL1 = new Pipe(width, 0.5*height, width * 0.15, height * 0.3);
+    // pipeL2 = new Pipe(width + pipeDistance, 0.5*height, width * 0.15, height * 0.3);
+    // pipeU1 = new Pipe(width, 0, width * 0.15, height * 0.3);
+    // pipeU2 = new Pipe(width + pipeDistance, 0, width * 0.15, height * 0.3);
     randPipe = Math.floor(Math.random() * 100) % 2;
+    
+    randomheightL1 = Math.random() * 0.15 + 0.2;
+    randomheightL2 = Math.random() * 0.1 + 0.25;
+    randomheightU1 = Math.random() * 0.15 + 0.2;
+    randomheightU2 = Math.random() * 0.15 + 0.2;
+
+    pipeL1 = new Pipe(width, (0.8 - randomheightL1) * height, width * 0.15, height * randomheightL1);
+    pipeL2 = new Pipe(width + pipeDistance, (0.8 - randomheightL2) * height, width * 0.15, height * randomheightL2);
+    pipeU1 = new Pipe(width, 0, width * 0.15, height * randomheightU1);
+    pipeU2 = new Pipe(width + pipeDistance, 0, width * 0.15, height * randomheightU2);   
+    
+    console.log(randomheightL1, randomheightL2, randomheightU1, randomheightU2);
 }
 
 function drawBackground()
@@ -214,7 +228,19 @@ function drawMovingBird()
 
 
 function drawPipe() {
+
+    // // ori: U: 0 - 3, L: 5 - 8
+    // // pair: U: 0 ~ 2 - 3.5, L: 5 - 6 ~ 8   //L: y = 1 - (0.2h+x*h) = 0.8h - xh
+
+    // pipeL1 = new Pipe(width, (0.8 - randomheightL1) * height, width * 0.15, height * randomheightL1);
+    // pipeL2 = new Pipe(width + pipeDistance, (0.8 - randomheightL2) * height, width * 0.15, height * randomheightL2);
+    // pipeU1 = new Pipe(width, 0, width * 0.15, height * randomheightU1);
+    // pipeU2 = new Pipe(width + pipeDistance, 0, width * 0.15, height * randomheightU2);   
     
+    // pipeL1 = new Pipe(width, 0.5*height, width * 0.15, height * 0.3);
+    // pipeL2 = new Pipe(width + pipeDistance, 0.5*height, width * 0.15, height * 0.3);
+    // pipeU1 = new Pipe(width, 0, width * 0.15, height * 0.3);
+    // pipeU2 = new Pipe(width + pipeDistance, 0, width * 0.15, height * 0.3);
     
     image(pipeImgs[randPipe][0], pipeL1.x, pipeL1.y, pipeL1.w, pipeL1.h);
     pipeL1.move();
@@ -273,6 +299,12 @@ function checkHit()
         soundObjs[4].play();
         mode = 2;
     }
+    if(y_bird <= 0 || y_bird >= 0.8 * height)
+    {
+        soundObjs[3].play();
+        soundObjs[4].play();
+        mode = 2;
+    }    
     
 
 }
