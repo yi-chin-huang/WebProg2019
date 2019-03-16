@@ -172,15 +172,19 @@ function setPipe() {
     
     randomheightL1 = Math.random() * 0.15 + 0.2;
     randomheightL2 = Math.random() * 0.1 + 0.25;
+    randomheightL3 = Math.random() * 0.15 + 0.2;
+
     randomheightU1 = Math.random() * 0.15 + 0.2;
-    randomheightU2 = Math.random() * 0.15 + 0.2;
+    randomheightU2 = Math.random() * 0.1 + 0.22;
+    randomheightU3 = Math.random() * 0.1 + 0.23;
 
     pipeL1 = new Pipe(width, (0.8 - randomheightL1) * height, width * 0.15, height * randomheightL1);
     pipeL2 = new Pipe(width + pipeDistance, (0.8 - randomheightL2) * height, width * 0.15, height * randomheightL2);
+    pipeL3 = new Pipe(width + 2 * pipeDistance, (0.8 - randomheightL3) * height, width * 0.15, height * randomheightL3);
     pipeU1 = new Pipe(width, 0, width * 0.15, height * randomheightU1);
     pipeU2 = new Pipe(width + pipeDistance, 0, width * 0.15, height * randomheightU2);   
+    pipeU3 = new Pipe(width + 2 * pipeDistance, 0, width * 0.15, height * randomheightU3);   
     
-    console.log(randomheightL1, randomheightL2, randomheightU1, randomheightU2);
 }
 
 function drawBackground()
@@ -251,6 +255,10 @@ function drawPipe() {
     pipeL2.move();
     pipeL2.reshow();
 
+    image(pipeImgs[randPipe][0], pipeL3.x, pipeL3.y, pipeL3.w, pipeL3.h);
+    pipeL3.move();
+    pipeL3.reshow();
+
     image(pipeImgs[randPipe][1], pipeU1.x, pipeU1.y, pipeU1.w, pipeU1.h);
     pipeU1.move();
     pipeU1.reshow();
@@ -258,6 +266,12 @@ function drawPipe() {
     image(pipeImgs[randPipe][1], pipeU2.x, pipeU2.y, pipeU2.w, pipeU2.h);
     pipeU2.move();
     pipeU2.reshow();
+
+    image(pipeImgs[randPipe][1], pipeU3.x, pipeU3.y, pipeU3.w, pipeU3.h);
+    pipeU3.move();
+    pipeU3.reshow();
+
+
 }
 function getStarted()
 {
@@ -273,7 +287,7 @@ function Pipe (x, y, w, h) {
     this.h = h;
 
     this.reshow = function () {
-        if(this.x < - this.w)
+        if(this.x < (-4.5) * this.w)
         {
             this.x = width;
         }
@@ -299,6 +313,15 @@ function checkHit()
         soundObjs[4].play();
         mode = 2;
     }
+
+    if( (x_bird+birdWidth >= pipeL3.x && x_bird <= pipeL3.x+pipeL3.w ) && ( (y_bird <= pipeU3.y + pipeU3.h)|| (y_bird+birdHeight >= pipeL3.y) ))
+    {
+
+        soundObjs[3].play();
+        soundObjs[4].play();
+        mode = 2;
+    }
+
     if(y_bird <= 0 || y_bird >= 0.8 * height)
     {
         soundObjs[3].play();
