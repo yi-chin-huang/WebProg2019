@@ -109,13 +109,13 @@ function keyPressed()
             mode = 1;
             vy = -3;
             triAng = -PI/4;
-            soundObjs[0].play(); 
+            soundObjs[1].play(); 
         }
-        else
+        else if (mode === 1)
         {
             vy = -3;
             triAng = -PI/4;
-            soundObjs[0].play();            
+            soundObjs[1].play();            
         }
 
 
@@ -262,6 +262,7 @@ function checkHit()
     if( (x_bird+birdWidth >= pipeL1.x && x_bird <= pipeL1.x+pipeL1.w ) && ( (y_bird <= pipeU1.y + pipeU1.h)|| (y_bird+birdHeight >= pipeL1.y) ))
     {
         soundObjs[3].play();
+        soundObjs[4].play();
         mode = 2;
     }
 
@@ -269,6 +270,7 @@ function checkHit()
     {
 
         soundObjs[3].play();
+        soundObjs[4].play();
         mode = 2;
     }
     
@@ -278,6 +280,7 @@ function checkHit()
 function lose()
 {
     image(gameOver, width/2 - gameOver.width/2 , height/2 - gameOver.height/2);
+    showScore();
 }
 
 function getPoints()
@@ -292,7 +295,17 @@ function showScore()
 {
     num1 = Math.floor(point/10);
     num2 = point%10;
-    image(numImgs[num1], width/2 - numImgs[num1].width/2, height * 0.1);
-    image(numImgs[num2], width/2 + numImgs[num1].width/2, height * 0.1);
+
+    if(mode == 2)
+    {
+        image(numImgs[num1], width/2 - numImgs[num1].width * 1.5, height * 0.3, numImgs[num1].width *1.5, numImgs[num1].height * 1.5);
+        image(numImgs[num2], width/2 , height * 0.3, numImgs[num1].width * 1.5, numImgs[num1].height * 1.5);       
+    }
+    else
+    {
+        image(numImgs[num1], width/2 - numImgs[num1].width/2, height * 0.1);
+        image(numImgs[num2], width/2 + numImgs[num1].width/2, height * 0.1);     
+    }
+
 }
 
