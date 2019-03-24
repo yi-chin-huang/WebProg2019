@@ -16,7 +16,19 @@ class Work
 
 let w1 = new Work('images/cover.png','NTUIM Camp notebook', 'portfolio-wrapper1');
 let w2 = new Work('images/impossible website.png','NTUIM Camp website','portfolio-wrapper2');
-let workList = [w1,w2];
+let w3 = new Work('images/prolog.png','Prolog website ','portfolio-wrapper2');
+let w4 = new Work('images/傳單.png','IM camp flyer','portfolio-wrapper1');
+let w5 = new Work('images/營服白.png ','Prolog website','portfolio-wrapper1');
+let w6 = new Work('images/營服.png','IM camp T-shirt (white)','portfolio-wrapper1');
+let w7 = new Work('images/路跑.png','IM camp T-shirt (blue) ','portfolio-wrapper1');
+let w8 = new Work('images/chimeiclothes.png','NTUCOS T-shirt ','portfolio-wrapper1');
+let w9 = new Work('images/painting1.jpg','Painting in Chimei photo 1','portfolio-wrapper1');
+let w10 = new Work('images/painting2.jpg','Painting in Chimei photo 2','portfolio-wrapper1');
+let w11 = new Work('images/painting3.jpg','Painting in Chimei photo 3','portfolio-wrapper1');
+let w12 = new Work('images/painting4.jpg','Painting in Chimei photo 4','portfolio-wrapper1');
+
+
+let workList = [w1,w2,w3,w4,w5,w6,w7,w8,w9,w10,w11,w12];
 ReactDOM.render(<MyWork workList = {workList} />, 
                  document.getElementById('works'));
 

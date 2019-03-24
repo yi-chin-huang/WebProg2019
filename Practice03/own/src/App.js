@@ -48,18 +48,5 @@ class Contact extends Component {
   }
 
 }
-{/* class Contact extends Component {
-  render() 
-  {
-    return (
-      
-        {this.props.info.map(
-          e => <i className= {e.icon}> </i>  <a href = {e.link}> {e.text} </a> <br>
-        )}
-     
-    )
-  }
-
-}; */}
 
 export {MyWork, Bar, Contact};
