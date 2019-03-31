@@ -3,22 +3,24 @@ import TodoList from './list';
 import Input from '../components/input';
 import Item from '../components/item';
 
-
-// let cnt = 0;
-
 class Main extends React.Component {
     constructor(props) {
         super(props);
         this.todoArr = [];
-        this.state = {todoItems: this.todoArr, itemcnt: 0};
+        this.idCnt = 0;
+        this.state = {todoItems: this.todoArr};
         this.itemNode = React.createRef();
         
     }
 
     addItem = content => {
-        let newItem = <Item content = {content} id = {this.state.itemcnt} del = {this.deleteItem} check = {this.checkItem} ref={this.itemNode}/>
+        let newItemNode  = <Item content = {content} id = {this.idCnt} 
+        del = {this.deleteItem} check = {this.checkItem} 
+        checked = {false} ref={this.itemNode}/>
+        let newItem = {node: newItemNode, isCompleted: false};
         this.todoArr.push(newItem);
-        this.setState((state) => ({todoItems: this.todoArr, itemcnt: state.itemcnt + 1}));
+        this.idCnt += 1;
+        this.setState((state) => ({todoItems: this.todoArr}));
     }
 
     handleInput = e => {
@@ -31,7 +33,7 @@ class Main extends React.Component {
     deleteItem = e => {
         const id = parseInt(e.target.id);
         for (var i = this.todoArr.length - 1; i >= 0; i--) {
-            if(this.todoArr[i].props.id === id)
+            if(this.todoArr[i].node.props.id === id)
             {
                 this.todoArr.splice(i,1);
                 break;
@@ -41,31 +43,53 @@ class Main extends React.Component {
     }
     
     checkItem = e => {
-        // const id = parseInt(e.target.id);
-        // let item = this.todoArr.find(obj => {return obj.props.id === id});
-        // let item = this.todoArr[0];
-        // for (var i = this.todoArr.length - 1; i >= 0; i--) {
-        //     if(this.todoArr[i].props.id === id)
-        //     {
-        //         item = this.todoArr[i];
-        //         break;
-        //     }	
-        // }
-        this.itemNode.current.changeStatus();
-        // let text = e.target.content;
+        const id = parseInt(e.target.id);
+        let todoItem = this.todoArr[0];
+        let itemId = 0;
+        for (var i = 0; i <= this.todoArr.length - 1; i++) {
+            if(this.todoArr[i].node.props.id === id)
+            {
+                todoItem = this.todoArr[i];
+                itemId = i;
+                break;
+            }	
+        }
+        console.log(itemId);
+        const styleComp = {textDecoration: "line-through", opacity: 0.5};
+        const styleActive = {textDecoration: "none", opacity: 1};
+        if(todoItem.isCompleted) 
+        {        
+            let newItemNode  = <Item content = {todoItem.node.props.content} id = {todoItem.node.props.id} 
+                                del = {this.deleteItem} check = {this.checkItem}
+                                checked = {false} style = {styleActive}/>
+            let newItem = {node: newItemNode, isCompleted: false};
+            this.todoArr[itemId] = newItem;
+            this.setState((state) => ({todoItems: this.todoArr}));
+        }
+        else{
+            let newItemNode  = <Item content = {todoItem.node.props.content} id = {todoItem.node.props.id} 
+                                del = {this.deleteItem} check = {this.checkItem}
+                                checked = {true} style = {styleComp}/>
+            let newItem = {node: newItemNode, isCompleted: true};
+            this.todoArr[itemId] = newItem;
+            this.setState((state) => ({todoItems: this.todoArr}));            
+        }
+
+        // let item = todoItem.node;
+        // // let text = item.getElementsByTagName('H1')[0];
         
-        // if(item.state.status == "active") 
+        // if(todoItem.isCompleted) 
         // {
-        //     item.setState(() => ({status: "completed"}));
-        //     text.style["textDecoration"] = "line-through";
-        //     text.style["opacity"] = 0.5;
+        //     todoItem.isCompleted = false;
+        //     text.style["textDecoration"] = "none";
+        //     text.style["opacity"] = 1;              
     
         // }
         // else
         // {
-        //     item.setState(() => ({status: "active"}));
-        //     text.style["textDecoration"] = "none";
-        //     text.style["opacity"] = 1;
+        //     todoItem.isCompleted = true;
+        //     text.style["textDecoration"] = "line-through";
+        //     text.style["opacity"] = 0.5;
     
         // }
         // this.setState((state) => ({todoItems: this.todoArr}));        

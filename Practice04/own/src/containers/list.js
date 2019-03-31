@@ -9,10 +9,10 @@ class TodoList extends React.Component {
     render() {
       return (
         <ul className = "todo-app__list" id = "todo-list">
-            {/* {this.props.list.map(
-                e => e 
-            )} */}
-            {this.props.list}
+            {this.props.list.map(
+                e => e.node 
+            )}
+            {/* {this.props.list} */}
         </ul>
       );
     }
