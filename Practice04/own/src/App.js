@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './containers/header';
+import Main from './containers/main';
+import Footer from './containers/footer';
 
-class App extends Component {
+class Input extends React.Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <input className = "todo-app__input" placeholder="What needs to be done?" id = "todo-input" ></input>
+    );
+  }
+}
+
+class TodoList extends React.Component {
+  render() {
+    return (
+      <ul className = "todo-app__list" id = "todo-list"></ul>
+    );
+  }
+}
+
+
+
+class Root extends React.Component {
+  render() {
+    return (
+      <div className = "todo-app__root">
+        <Header/>
+        <Main/>
+        <Footer/>
       </div>
     );
   }
 }
 
-export default App;
+
+export default Root;
