@@ -35,7 +35,7 @@ class Item extends React.Component {
             <li class = "todo-app__item">
                 <div class = "todo-app__checkbox">
                     <input id = {this.props.id} type = "checkbox" checked = {this.props.checked} onClick = {this.props.check}></input>
-                    <label for = {this.props.id}></label>
+                    <label htmlFor = {this.props.id}></label>
                 </div>
                 <h1 class = "todo-app__item-detail" ref = "itemContent" style = {this.props.style} >{this.props.content}</h1>
                 <img src = {x} class = "todo-app__item-x" onClick = {this.props.del} id = {this.props.id}/>
