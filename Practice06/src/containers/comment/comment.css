@@ -1,0 +1,186 @@
+
+  .body {
+    font-family: sans-serif;
+    font-size: 20px;
+    color: #5B5B5B;
+    font-weight: 300;
+    line-height: 1.8;
+    text-decoration : none;
+    margin: 8%;
+  }
+  
+  .title p{
+    font-family: Futura;
+    font-size: 40px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 300;
+    margin-top: 8%;
+    margin-bottom: 20px;
+    text-decoration: none;
+    /* line-height: 0.8; */
+  
+  }
+  
+  .title a:link, .title a:visited{
+    color: #000;
+    text-decoration: none;
+  }
+  
+  
+  
+  .intro p{
+    font-family: Gill Sans;
+    font-size: 30px;
+    color: #5B5B5B;
+    font-weight: 300;
+    margin-top: 10px;
+    margin-bottom: 50px;
+  
+  }
+  
+  .box {
+    border-style: solid;
+    border-color: lightseagreen;
+    border-radius: 10px;
+  /*   height: 400px; */
+    padding-top:1.5em;
+    padding-bottom: 1.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-top: 1.5em;
+  }
+  .text {
+  
+    font-family: sans-serif;
+    font-size: 20px;
+    color: #5B5B5B;
+    font-weight: 200; 
+  
+  }
+  .talker{
+  
+    font-family: sans-serif;
+    font-size: 20px;
+    color: #5B5B5B;
+    font-weight: 400; 
+  
+  }
+  
+  .time
+  {
+    color:  grey;
+    font-size: 17px;
+    font-weight: 200;
+    float: right;
+    /* display: inline; */
+  }
+  
+  .del_edit
+  {
+    float: right;
+    display: inline;
+    margin-top: -4px;
+  }
+  
+  
+  .portfolio-wrapper1 img{
+    margin: 10px;
+    width: 30% !important;
+    display: inline;
+  }
+  .portfolio-wrapper2 img{
+    margin:  10px;
+    width: 60%;
+  
+    display:inline;
+  
+  }
+  
+  .send_msg{
+    margin-top: 1em;
+  }
+  .send_msg #message{
+    width: 50%;
+    height: 3.6em;
+  
+  }
+  .send_msg input{
+  
+    height: 1.8em;
+    margin-right: 1%;
+    margin-top: 1em;
+  
+  }
+  .send_msg .leave{
+  
+    font-size: 22px;
+  
+  }
+  
+  
+  .edit_del{
+    font-family: sans-serif;
+    font-size: 16px;
+    color: lightseagreen;
+    background: none;
+    font-weight: 200;
+    line-height: 1.8;
+    border: none;
+    display: inline;
+    cursor: pointer; 
+  
+  }
+  
+  
+  .contact p {
+    font-family: sans-serif;
+    font-size: 20px;
+    color: #5B5B5B;
+    font-weight: 300;
+    line-height: 1.8;
+  
+  } 
+  
+  .contact a:hover {
+      color: seagreen;
+  }
+  /* unvisited link */
+  .contact a:link {
+    text-decoration: none;
+    color: lightseagreen;
+  }
+  
+  /* visited link */
+  .contact a:visited {
+    color: lightseagreen;
+  }
+  
+  
+  /* selected link */
+  .contact a:active {
+      color: lightsalmon;
+  }
+  
+  
+  a:hover {
+      color: seagreen;
+  }
+  
+  a:link {
+    text-decoration: none;
+    color: lightseagreen;
+  }
+  
+  a:visited {
+    color: lightseagreen;
+  }
+  
+  a:active {
+      color: lightsalmon;
+  }
+/*   
+  @media screen and (max-width: 768px) {
+    .portfolio-wrapper1 img, .portfolio-wrapper2 img {
+      width: 80% !important;
+    } */
