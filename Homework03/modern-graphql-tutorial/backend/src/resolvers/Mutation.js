@@ -78,7 +78,7 @@ const Mutation = {
       id: uuidv4(),
       ...args.data
     }
-
+    // console.log(post)
     db.posts.unshift(post)
 
     if (args.data.published) {

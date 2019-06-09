@@ -1,4 +1,19 @@
-# Modern GraphQL Tutorial
+# Homework03 
+### B05705001  黃意芹
+
+### 執行：
+```
+cd /modern-graphql-tutorial/
+cd frontend && npm install && npmstart
+cd .. && cd backdnd && npm install && npmstart
+```
+### 功能介紹：
+* 選擇作者post貼文
+* 右側依作者分類貼文，包含該作者已發文數
+* 右側貼文處點擊可展開與收合
+
+
+## Modern GraphQL Tutorial
 
 After this tutorial, you will be able to:
 

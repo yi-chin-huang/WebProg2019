@@ -7,7 +7,8 @@ const Post = ({
     title,
     body,
     author: { name },
-    published
+    published,
+    likes
   }
 }) => {
   return (

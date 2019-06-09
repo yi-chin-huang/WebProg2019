@@ -170,7 +170,7 @@ class App extends Component {
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                     >
-                      <Typography className={classes.expandTitle}>
+                      <Typography>
                         {userPosts[0].author.name} ({userPosts.length} Posts)
                       </Typography>
                     </ExpansionPanelSummary>
