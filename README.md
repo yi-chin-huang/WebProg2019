@@ -4,7 +4,6 @@
 * HW2: Flappy Bird Game using p5.js
 * HW3: A simple forum using React GraphQL
 
-https://tripplanna.herokuapp.com/
 # [107-2] Web Programming Final <br> (GROUP 9) Trip Scheduler
 
 ### 1. 一句話描述這個服務在做什麼
