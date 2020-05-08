@@ -4,7 +4,9 @@
 * HW2: Flappy Bird Game using p5.js
 * HW3: A simple forum using React GraphQL
 
-# [107-2] Web Programming Final <br> (GROUP 9) Trip Scheduler
+## [107-2] Web Programming Final (GROUP 9) Trip Scheduler
+
+[Repo Link](https://github.com/CodingSheep1229/tsu_tsu_hao_bang)
 
 ### 1. 一句話描述這個服務在做什麼
 提供多人線上共同規劃出遊行程
